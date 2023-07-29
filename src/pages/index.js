@@ -1,3 +1,4 @@
+import RootLayout from "@/components/layout/RootLayout";
 import Link from "next/link";
 import React from "react";
 
@@ -23,7 +24,7 @@ const HomePage = () => {
       <h3>Featured Category</h3>
       {categories.map((category, index) => (
         <Link href={`/category/${category}`} key={index}>
-          <li>{category}</li>
+          <button className="btn m-1">{category}</button>
         </Link>
       ))}
     </div>
@@ -31,3 +32,7 @@ const HomePage = () => {
 };
 
 export default HomePage;
+
+HomePage.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};
