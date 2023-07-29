@@ -1,4 +1,4 @@
-// import RootLayout from "@/components/Layouts/RootLayout";
+import RootLayout from "@/components/Layouts/RootLayout";
 import Head from "next/head";
 
 const HomePage = ({ products }) => {
@@ -15,17 +15,15 @@ const HomePage = ({ products }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <button className="btn btn-secondary">button</button>
-      {/* <Banner />
-      <AllNews allNews={allNews} /> */}
+      <div>Home Page</div>
     </>
   );
 };
 export default HomePage;
 
-// HomePage.getLayout = function getLayout(page) {
-//   return <RootLayout>{page}</RootLayout>;
-// };
+HomePage.getLayout = function getLayout(page) {
+  return <RootLayout>{page}</RootLayout>;
+};
 
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:5000/products");
