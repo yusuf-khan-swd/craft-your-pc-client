@@ -1,4 +1,5 @@
 import RootLayout from "@/components/Layouts/RootLayout";
+import ProductCard from "@/components/UI/ProductCard";
 import Head from "next/head";
 
 const HomePage = ({ products, categories }) => {
@@ -16,7 +17,15 @@ const HomePage = ({ products, categories }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>Home Page</div>
+      <div className="grid grid-cols-3 gap-5 p-10 w-[80%] mx-auto">
+        {products && products.length > 0 ? (
+          products.map((product) => (
+            <ProductCard key={product._id} product={product} />
+          ))
+        ) : (
+          <p>No products available.</p>
+        )}
+      </div>
     </>
   );
 };
@@ -27,14 +36,20 @@ HomePage.getLayout = function getLayout(page) {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:5000/products");
-  const products = await res.json();
+  try {
+    const res = await fetch("http://localhost:5000/productsq");
+    const products = await res.json();
 
-  const res2 = await fetch("http://localhost:5000/categories");
-  const categories = await res2.json();
+    const res2 = await fetch("http://localhost:5000/categories");
+    const categories = await res2.json();
 
-  return {
-    props: { products: products?.data, categories: categories?.data },
-    revalidate: 30,
-  };
+    return {
+      props: { products: products?.data, categories: categories?.data },
+      revalidate: 30,
+    };
+  } catch (error) {
+    return {
+      props: { products: [], categories: [] },
+    };
+  }
 };
