@@ -29,7 +29,9 @@ const HomePage = ({ products, categories }) => {
             <p>No products available.</p>
           )}
         </div>
-        <h1></h1>
+        <h1 className="font-semibold text-3xl mt-3 mb-2">
+          Featured Categories
+        </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-2 m-2 mb-16 mx-auto">
           {categories && categories.length > 0 ? (
             categories.map((category) => (
