@@ -7,9 +7,12 @@ const ProductDetails = ({ product }) => {
       <div className="w-[50%] space-y-3">
         <h1 className="text-3xl font-semibold">{product?.name}</h1>
         <p className="text-xl">Rating: {product?.rating}</p>
-        <ul className="space-y-1 text-lg">
+        <ul className="space-y-2 text-lg">
           {product?.features?.map((feature) => (
-            <li key={feature}>{feature}</li>
+            <li key={feature}>
+              <b>{feature.split(":")[0]}: </b>
+              {feature.split(":")[1]}
+            </li>
           ))}
         </ul>
         <button className="btn btn-neutral">Buy Now</button>
