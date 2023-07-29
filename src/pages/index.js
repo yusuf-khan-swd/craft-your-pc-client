@@ -1,4 +1,5 @@
 import RootLayout from "@/components/layout/RootLayout";
+import { useSession } from "next-auth/react";
 import Link from "next/link";
 import React from "react";
 
@@ -13,9 +14,11 @@ const categories = [
 ];
 
 const HomePage = () => {
+  const { data: session } = useSession();
+
   return (
     <div>
-      <h1>Home Page</h1>
+      <h1>Home Page {session?.user.email}</h1>
       <h2>Featured Products</h2>
       <div>
         <p>Product1</p>
