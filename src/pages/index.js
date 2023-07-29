@@ -19,7 +19,7 @@ const HomePage = ({ products, categories }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="w-[80%] mx-auto">
-        <h1>Featured Products</h1>
+        <h1 className="font-semibold text-3xl mt-3 mb-2">Featured Products</h1>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6  mb-16 mt-4">
           {products && products.length > 0 ? (
             products.map((product) => (
