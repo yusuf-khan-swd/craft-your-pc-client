@@ -37,7 +37,7 @@ HomePage.getLayout = function getLayout(page) {
 
 export const getStaticProps = async () => {
   try {
-    const res = await fetch("http://localhost:5000/productsq");
+    const res = await fetch("http://localhost:5000/products");
     const products = await res.json();
 
     const res2 = await fetch("http://localhost:5000/categories");
@@ -45,7 +45,6 @@ export const getStaticProps = async () => {
 
     return {
       props: { products: products?.data, categories: categories?.data },
-      revalidate: 30,
     };
   } catch (error) {
     return {
