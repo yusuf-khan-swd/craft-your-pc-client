@@ -2,6 +2,30 @@ import Link from "next/link";
 
 const Navbar = ({ categories }) => {
   console.log("Navbar categories", categories);
+
+  const navItems = (
+    <>
+      <li>
+        <Link href="/login">Login</Link>
+      </li>
+      <li tabIndex={0}>
+        <details>
+          <summary>Categories</summary>
+          <ul className="p-2">
+            <li>
+              <a>Submenu 1</a>
+            </li>
+            <li>
+              <a>Submenu 2</a>
+            </li>
+          </ul>
+        </details>
+      </li>
+      <li>
+        <a>Item 3</a>
+      </li>
+    </>
+  );
   return (
     <div className="bg-neutral text-neutral-content">
       <div className="navbar container">
@@ -27,23 +51,7 @@ const Navbar = ({ categories }) => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <a>Item 1</a>
-              </li>
-              <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </li>
-              <li>
-                <a>Item 3</a>
-              </li>
+              {navItems}
             </ul>
           </div>
           <Link href="/" className="btn btn-ghost normal-case text-xl">
@@ -51,27 +59,7 @@ const Navbar = ({ categories }) => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-            <li>
-              <a>Item 1</a>
-            </li>
-            <li tabIndex={0}>
-              <details>
-                <summary>Categories</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
-            </li>
-            <li>
-              <a>Item 3</a>
-            </li>
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navItems}</ul>
         </div>
         <div className="navbar-end">
           <Link href="/pc-builder" className="btn normal-case">
