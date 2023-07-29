@@ -2,7 +2,7 @@ import Link from "next/link";
 const ProductCard = ({ product }) => {
   return (
     <div className="rounded-2xl h-[480px] flex flex-col items-start justify-between p-5 overflow-hidden shadow-md border border-gray-100 hover:shadow-2xl hover:scale-[102%] transition-all">
-      <Link href={`/product/${product.id}`} className="w-full">
+      <Link href={`/product/${product._id}`} className="w-full">
         <img src={product?.image} alt="product" width={300} />
         <h1 className="text-xl font-semibold">{product?.name}</h1>
       </Link>
