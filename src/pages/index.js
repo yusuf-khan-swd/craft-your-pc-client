@@ -1,8 +1,9 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import Head from "next/head";
 
-const HomePage = ({ products }) => {
-  console.log("Inside HomePage", products);
+const HomePage = ({ products, categories }) => {
+  console.log("Inside HomePage products", products);
+  console.log("Inside HomePage categories", categories);
 
   return (
     <>
@@ -28,9 +29,12 @@ HomePage.getLayout = function getLayout(page) {
 export const getStaticProps = async () => {
   const res = await fetch("http://localhost:5000/products");
   const products = await res.json();
-  console.log("Inside getStaticProps", products?.data?.length);
+
+  const res2 = await fetch("http://localhost:5000/categories");
+  const categories = await res2.json();
+
   return {
-    props: { products: products?.data },
+    props: { products: products?.data, categories: categories?.data },
     revalidate: 30,
   };
 };
