@@ -1,10 +1,26 @@
 import RootLayout from "@/components/Layouts/RootLayout";
+import Link from "next/link";
 import React from "react";
 
-const PCBuilderPage = () => {
+const PCBuilderPage = ({ categories }) => {
+  console.log("Inside Pc builder page", categories);
   return (
-    <div className="container">
-      <h1>PC Builder Page</h1>
+    <div className="w-[90%] mx-auto py-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-2 m-2 mb-16 mx-auto">
+        {categories && categories.length > 0 ? (
+          categories.map((category) => (
+            <Link
+              href={`/category/${category._id}`}
+              className="btn m-1"
+              key={category._id}
+            >
+              {category.category_name}
+            </Link>
+          ))
+        ) : (
+          <p>No categories available.</p>
+        )}
+      </div>
     </div>
   );
 };
@@ -13,4 +29,19 @@ export default PCBuilderPage;
 
 PCBuilderPage.getLayout = function (page) {
   return <RootLayout>{page}</RootLayout>;
+};
+
+export const getServerSideProps = async () => {
+  try {
+    const res = await fetch("http://localhost:5000/categories");
+    const categories = await res.json();
+
+    return {
+      props: { categories: categories?.data },
+    };
+  } catch (error) {
+    return {
+      props: { categories: [] },
+    };
+  }
 };
