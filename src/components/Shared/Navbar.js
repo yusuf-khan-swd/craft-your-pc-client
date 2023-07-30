@@ -1,12 +1,15 @@
+import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
 
 const Navbar = ({ categories }) => {
   console.log("Navbar categories", categories);
 
+  const { data: session } = useSession();
+
   const navItems = (
     <>
       <li>
-        <Link href="/login">Login</Link>
+        <Link href="/">Home</Link>
       </li>
       <li tabIndex={0}>
         <details>
@@ -21,9 +24,15 @@ const Navbar = ({ categories }) => {
           </ul>
         </details>
       </li>
-      <li>
-        <a>Item 3</a>
-      </li>
+      {session?.user?.email ? (
+        <li>
+          <button onClick={() => signOut()}>Logout</button>
+        </li>
+      ) : (
+        <li>
+          <Link href="/login">Login</Link>
+        </li>
+      )}
     </>
   );
   return (
