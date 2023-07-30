@@ -1,6 +1,5 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import ProductCard from "@/components/UI/ProductCard";
-import React from "react";
 
 const CategoryDetailsPage = ({ products, category }) => {
   console.log("inside category details page", products);
