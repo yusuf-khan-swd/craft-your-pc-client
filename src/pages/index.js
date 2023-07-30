@@ -63,10 +63,12 @@ HomePage.getLayout = function getLayout(page) {
 
 export const getStaticProps = async () => {
   try {
-    const res = await fetch("http://localhost:5000/products");
+    const res = await fetch("https://craft-your-pc-server.vercel.app/products");
     const products = await res.json();
 
-    const res2 = await fetch("http://localhost:5000/categories");
+    const res2 = await fetch(
+      "https://craft-your-pc-server.vercel.app/categories"
+    );
     const categories = await res2.json();
 
     return {

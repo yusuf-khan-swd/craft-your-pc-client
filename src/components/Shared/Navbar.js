@@ -7,7 +7,7 @@ const Navbar = () => {
   console.log("Navbar categories", categories);
 
   useEffect(() => {
-    fetch("http://localhost:5000/categories")
+    fetch("https://craft-your-pc-server.vercel.app/categories")
       .then((res) => res.json())
       .then((data) => {
         setCategories(data.data);

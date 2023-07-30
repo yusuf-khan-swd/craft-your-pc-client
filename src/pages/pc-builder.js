@@ -39,7 +39,9 @@ PCBuilderPage.getLayout = function (page) {
 
 export const getServerSideProps = async () => {
   try {
-    const res = await fetch("http://localhost:5000/categories");
+    const res = await fetch(
+      "https://craft-your-pc-server.vercel.app/categories"
+    );
     const categories = await res.json();
 
     return {

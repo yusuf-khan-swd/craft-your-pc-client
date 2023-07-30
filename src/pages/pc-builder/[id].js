@@ -65,7 +65,7 @@ PCBuilderDetails.getLayout = function (page) {
 export const getServerSideProps = async (context) => {
   const { params } = context;
   const res = await fetch(
-    `http://localhost:5000/category-products/${params.id}`
+    `https://craft-your-pc-server.vercel.app/category-products/${params.id}`
   );
   const data = await res.json();
   const products = data?.data?.products;

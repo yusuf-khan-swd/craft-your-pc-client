@@ -28,7 +28,7 @@ CategoryDetailsPage.getLayout = function (page) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:5000/categories");
+  const res = await fetch("https://craft-your-pc-server.vercel.app/categories");
   const categories = await res.json();
 
   const paths = categories.data?.map((category) => ({
@@ -41,7 +41,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context) => {
   const { params } = context;
   const res = await fetch(
-    `http://localhost:5000/category-products/${params.id}`
+    `https://craft-your-pc-server.vercel.app/category-products/${params.id}`
   );
   const data = await res.json();
   const products = data?.data?.products;
