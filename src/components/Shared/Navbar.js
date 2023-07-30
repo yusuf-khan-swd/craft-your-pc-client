@@ -1,12 +1,22 @@
 import { signOut, useSession } from "next-auth/react";
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
-const Navbar = ({ categories }) => {
+const Navbar = () => {
+  const [categories, setCategories] = useState([]);
   console.log("Navbar categories", categories);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/categories")
+      .then((res) => res.json())
+      .then((data) => {
+        setCategories(data.data);
+      });
+  }, []);
 
   const { data: session } = useSession();
 
-  const navItems = (
+  const menuItems = (
     <>
       <li>
         <Link href="/">Home</Link>
@@ -14,13 +24,16 @@ const Navbar = ({ categories }) => {
       <li tabIndex={0}>
         <details>
           <summary>Categories</summary>
-          <ul className="p-2">
-            <li>
-              <a>Submenu 1</a>
-            </li>
-            <li>
-              <a>Submenu 2</a>
-            </li>
+          <ul className="p-2 w-48">
+            {categories &&
+              categories.length > 0 &&
+              categories.map((category) => (
+                <li key={category._id}>
+                  <Link href={`/category/${category._id}`}>
+                    {category.category_name}
+                  </Link>
+                </li>
+              ))}
           </ul>
         </details>
       </li>
@@ -58,9 +71,9 @@ const Navbar = ({ categories }) => {
             </label>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+              className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 text-gray-500 rounded-box w-52"
             >
-              {navItems}
+              {menuItems}
             </ul>
           </div>
           <Link href="/" className="btn btn-ghost normal-case text-xl">
@@ -68,7 +81,9 @@ const Navbar = ({ categories }) => {
           </Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">{navItems}</ul>
+          <ul className="menu menu-horizontal px-1 z-[1] text-gray-500">
+            {menuItems}
+          </ul>
         </div>
         <div className="navbar-end">
           <Link href="/pc-builder" className="btn normal-case">
