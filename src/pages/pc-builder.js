@@ -9,13 +9,15 @@ const PCBuilderPage = ({ categories }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-1 md:gap-2 m-2 mb-16 mx-auto">
         {categories && categories.length > 0 ? (
           categories.map((category) => (
-            <Link
-              href={`/category/${category._id}`}
-              className="btn m-1"
-              key={category._id}
-            >
-              {category.category_name}
-            </Link>
+            <div key={category._id}>
+              <p>{category.category_name}</p>
+              <Link
+                href={`/pc-builder/${category._id}`}
+                className="btn m-1 w-full"
+              >
+                Choose
+              </Link>
+            </div>
           ))
         ) : (
           <p>No categories available.</p>
