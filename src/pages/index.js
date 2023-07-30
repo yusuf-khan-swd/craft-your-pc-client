@@ -37,7 +37,7 @@ const HomePage = ({ products, categories }) => {
             categories.map((category) => (
               <Link
                 href={`/category/${category._id}`}
-                className="btn m-1"
+                className="btn m-1 normal-case"
                 key={category._id}
               >
                 {category.category_name}
@@ -67,6 +67,7 @@ export const getStaticProps = async () => {
 
     return {
       props: { products: products?.data, categories: categories?.data },
+      revalidate: 30,
     };
   } catch (error) {
     return {
