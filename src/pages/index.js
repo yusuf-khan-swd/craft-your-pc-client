@@ -5,9 +5,6 @@ import Head from "next/head";
 import Link from "next/link";
 
 const HomePage = ({ products, categories }) => {
-  console.log("Inside HomePage products", products);
-  console.log("Inside HomePage categories", categories);
-
   return (
     <>
       <Head>

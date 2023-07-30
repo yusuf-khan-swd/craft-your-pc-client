@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const [categories, setCategories] = useState([]);
-  console.log("Navbar categories", categories);
 
   useEffect(() => {
     fetch("https://craft-your-pc-server.vercel.app/categories")
