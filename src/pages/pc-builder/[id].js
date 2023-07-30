@@ -1,10 +1,14 @@
 import RootLayout from "@/components/Layouts/RootLayout";
-import ProductCard from "@/components/UI/ProductCard";
-import React from "react";
+import { useRouter } from "next/router";
 
-const PCBuilderCategory = ({ products, category }) => {
-  console.log("inside category details page", products);
-  console.log("inside category details page", category);
+const PCBuilderDetails = ({ products, category }) => {
+  console.log("PC Builder details page", products);
+  console.log("PC Builder details page", category);
+  const router = useRouter();
+
+  const handleAddToBuilder = () => {
+    router.push("/pc-builder");
+  };
 
   return (
     <div className="w-[80%] mx-auto">
@@ -35,7 +39,12 @@ const PCBuilderCategory = ({ products, category }) => {
                 <p>Rating: {product?.rating}</p>
               </div>
 
-              <button className="btn btn-primary w-full mt-3 mb-2">Add</button>
+              <button
+                className="btn btn-primary w-full mt-3 mb-2 normal-case"
+                onClick={handleAddToBuilder}
+              >
+                Add To Builder
+              </button>
             </div>
           ))
         ) : (
@@ -46,9 +55,9 @@ const PCBuilderCategory = ({ products, category }) => {
   );
 };
 
-export default PCBuilderCategory;
+export default PCBuilderDetails;
 
-PCBuilderCategory.getLayout = function (page) {
+PCBuilderDetails.getLayout = function (page) {
   return <RootLayout>{page}</RootLayout>;
 };
 
