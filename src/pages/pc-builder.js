@@ -1,9 +1,7 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import Link from "next/link";
-import React from "react";
 
 const PCBuilderPage = ({ categories }) => {
-  console.log("Inside Pc builder page", categories);
   categories = categories.filter(
     (category) => category.category_name !== "Others"
   );
