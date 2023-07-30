@@ -15,12 +15,12 @@ const ProductCard = ({ product }) => {
         <h1 className="text-xl font-semibold mb-2">{product?.name}</h1>
       </Link>
       <div className="space-y-1">
-        <p>Category: {product?.category}</p>
-        <p>Rating: {product?.rating}</p>
+        <p className="text-sm">Category: {product?.category}</p>
         <p className="text-sm">Price: ${product?.price}</p>
         <p className="text-sm">
-          Status : {product?.status ? "In stock" : "Out of stock"}
+          Status: {product?.status ? "In stock" : "Out of stock"}
         </p>
+        <p>Rating: {product?.rating}</p>
       </div>
     </div>
   );
