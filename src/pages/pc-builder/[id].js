@@ -6,8 +6,9 @@ const PCBuilderDetails = ({ products, category }) => {
   console.log("PC Builder details page", category);
   const router = useRouter();
 
-  const handleAddToBuilder = () => {
+  const handleAddToBuilder = (product) => {
     router.push("/pc-builder");
+    console.log("Add To Build", product);
   };
 
   return (
@@ -41,7 +42,7 @@ const PCBuilderDetails = ({ products, category }) => {
 
               <button
                 className="btn btn-primary w-full mt-3 mb-2 normal-case"
-                onClick={handleAddToBuilder}
+                onClick={() => handleAddToBuilder(product)}
               >
                 Add To Builder
               </button>
