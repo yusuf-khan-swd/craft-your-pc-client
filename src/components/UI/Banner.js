@@ -14,9 +14,9 @@ const Banner = () => {
             is hardly a home in Bangladesh without a tech product. This is where
             we come in. Craft Your PC Ltd.{" "}
           </p>
-          <Link href="/login">
+          <a href="#featured">
             <button className="btn btn-primary">Get Started</button>
-          </Link>
+          </a>
         </div>
       </div>
     </div>
