@@ -5,7 +5,7 @@ import { signIn } from "next-auth/react";
 
 const LoginPage = () => {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col items-center mt-[8%]">
       <h1>Login Page</h1>
       <button
         onClick={() => signIn("google", { callbackUrl: "/" })}
