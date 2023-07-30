@@ -1,7 +1,5 @@
 import RootLayout from "@/components/Layouts/RootLayout";
 import ProductDetails from "@/components/UI/ProductDetails";
-import { useRouter } from "next/router";
-import React from "react";
 
 const ProductDetailsPage = ({ product }) => {
   console.log("ProductDetailsPage", product);
