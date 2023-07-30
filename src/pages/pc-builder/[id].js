@@ -1,14 +1,18 @@
 import RootLayout from "@/components/Layouts/RootLayout";
+import { addToBuilder } from "@/redux/feature/pcBuilder/pcBuilderSlice";
 import { useRouter } from "next/router";
+import { useDispatch } from "react-redux";
 
 const PCBuilderDetails = ({ products, category }) => {
   console.log("PC Builder details page", products);
   console.log("PC Builder details page", category);
+
   const router = useRouter();
+  const dispatch = useDispatch();
 
   const handleAddToBuilder = (product) => {
     router.push("/pc-builder");
-    console.log("Add To Build", product);
+    dispatch(addToBuilder(product));
   };
 
   return (
