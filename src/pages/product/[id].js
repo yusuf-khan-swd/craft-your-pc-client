@@ -4,8 +4,6 @@ import { useRouter } from "next/router";
 import React from "react";
 
 const ProductDetailsPage = ({ product }) => {
-  const router = useRouter();
-
   console.log("ProductDetailsPage", product);
 
   return <ProductDetails product={product} />;
