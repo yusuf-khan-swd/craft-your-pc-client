@@ -20,7 +20,6 @@ const ProductDetails = ({ product }) => {
           <p>Individual Rating: {product?.individualRating}</p>
           <p>Average Rating: {product?.averageRating}</p>
           <p>Reviews: {product?.reviews}</p>
-          <button className="btn btn-neutral">Buy Now</button>
         </div>
       </div>
     </div>
